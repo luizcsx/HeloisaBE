@@ -2,7 +2,7 @@
 
 __attribute__((externally_visible)) const ROMHeader rom_header = {
     "SEGA MEGA DRIVE ",
-    "(C)LUIZ 2026    ",
+    "(C)LUIZ OCT2026 ",
     "HELOISA E A BIBLIOTECA DA ESPERANCA             ",
     "HELOISA E A BIBLIOTECA DA ESPERANCA             ",
     "GM 00000000-00",
