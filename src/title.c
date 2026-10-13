@@ -28,8 +28,8 @@ void title_update(void)
         start_visible = !start_visible;
 
         if (start_visible)
-            VDP_drawText("APERTE START!", 12, 20);
+            VDP_drawText("PRESSIONE START", 12, 25);
         else
-            VDP_clearTextArea(12, 20, 16, 1);
+            VDP_clearTextArea(12, 25, 16, 1);
     }
 }
