@@ -28,7 +28,7 @@ void title_update(void)
         start_visible = !start_visible;
 
         if (start_visible)
-            VDP_drawText("APERTE START!", 12, 25);
+            VDP_drawText("APERTE START", 12, 25);
         else
             VDP_clearTextArea(12, 25, 16, 1);
     }
