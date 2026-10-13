@@ -1,6 +1,6 @@
 #include "genesis.h"
 
-__attribute__((externally_visible)) const ROMHeader rom_header = {
+const ROMHeader rom_header = {
     "SEGA MEGA DRIVE ",
     "(C)LUIZ 2026    ",
     "HELOISA E A BIBLIOTECA DA ESPERANCA             ",
@@ -9,7 +9,7 @@ __attribute__((externally_visible)) const ROMHeader rom_header = {
     0x0000,
     "JD              ",
     0x00000000,
-    0x00100000,
+    0x00400000,
     0x00FF0000,
     0x00FFFFFF,
     "  ",
