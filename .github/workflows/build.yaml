@@ -1,0 +1,28 @@
+name: Build ROM
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/stephane-d/sgdk:latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build ROM
+        run: |
+          cd $GITHUB_WORKSPACE
+          make
+
+      - name: Upload ROM artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: rom-md
+          path: out/rom.bin
