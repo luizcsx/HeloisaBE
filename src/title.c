@@ -17,7 +17,7 @@ void title_init(void)
     blink_timer = 0;
     start_visible = TRUE;
 
-    XGM_startPlayPCM(&title_bgm, 0, SOUND_PCM_CH1, SOUND_PAN_CENTER);
+    SND_PCM_startPlay(title_bgm, sizeof(title_bgm), SOUND_PCM_RATE_13400, SOUND_PAN_CENTER, TRUE);
 }
 
 void title_update(void)
@@ -34,7 +34,4 @@ void title_update(void)
         else
             VDP_clearTextArea(12, 25, 16, 1);
     }
-
-    if (!XGM_isPlayingPCM(SOUND_PCM_CH1))
-        XGM_startPlayPCM(&title_bgm, 0, SOUND_PCM_CH1, SOUND_PAN_CENTER);
 }
