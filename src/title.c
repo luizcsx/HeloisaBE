@@ -16,6 +16,8 @@ void title_init(void)
 
     blink_timer = 0;
     start_visible = TRUE;
+
+    XGM_startPlayPCM(&title_bgm, 0, SOUND_PCM_CH1, SOUND_PAN_CENTER);
 }
 
 void title_update(void)
@@ -28,8 +30,11 @@ void title_update(void)
         start_visible = !start_visible;
 
         if (start_visible)
-            VDP_drawText("APERTE START", 12, 25);
+            VDP_drawText("APERTE START!", 12, 25);
         else
             VDP_clearTextArea(12, 25, 16, 1);
     }
+
+    if (!XGM_isPlayingPCM(SOUND_PCM_CH1))
+        XGM_startPlayPCM(&title_bgm, 0, SOUND_PCM_CH1, SOUND_PAN_CENTER);
 }
