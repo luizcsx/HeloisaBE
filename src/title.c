@@ -1,6 +1,7 @@
 #include <genesis.h>
 #include "title.h"
 #include "resources.h"
+#include "game_state.h"
 
 static u16 blink_timer;
 static u16 start_visible;
@@ -28,6 +29,15 @@ void title_init(void)
 
 void title_update(void)
 {
+    u16 joy = JOY_readJoypad(JOY_1);
+
+    if (joy & BUTTON_START)
+    {
+        SND_PCM_stopPlay();
+        game_state = STATE_MENU;
+        return;
+    }
+
     blink_timer++;
 
     if (blink_timer >= 30)
