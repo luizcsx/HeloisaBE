@@ -2,6 +2,7 @@
 #include "menu.h"
 #include "game_state.h"
 #include "save.h"
+#include "resources.h"
 
 #define MENU_OPT_NEW_GAME  0
 #define MENU_OPT_CONTINUE  1
@@ -71,7 +72,7 @@ static void menu_confirm(void)
             break;
 
         case MENU_OPT_OPTIONS:
-            
+            XGM2_playPCM(stage_bgm, sizeof(stage_bgm), SOUND_PCM_CH2);
             break;
     }
 }
