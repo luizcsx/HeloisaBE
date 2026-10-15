@@ -84,7 +84,7 @@ void menu_init(void)
     VDP_clearPlane(BG_A, TRUE);
     VDP_clearPlane(BG_B, TRUE);
 
-    PAL_setColor((PAL0 * 16), RGB24_TO_VDPCOLOR(0x445538));
+    PAL_setColor((PAL0 * 16), RGB24_TO_VDPCOLOR(0x246024));
     VDP_setBackgroundColor((PAL0 * 16));
 
     PAL_setColors((PAL1 * 16), palette_black, 1, DMA);
