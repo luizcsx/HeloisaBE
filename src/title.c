@@ -6,7 +6,6 @@
 static u16 blink_timer;
 static u16 start_visible;
 static bool fading_out;
-static s16 fade_out_volume;
 
 #define APERTE_START_TILE_X  7
 #define APERTE_START_TILE_Y  24
@@ -14,8 +13,7 @@ static s16 fade_out_volume;
 #define APERTE_START_TILE_H  9
 #define APERTE_START_TILE_INDEX (TILE_USER_INDEX + 1120)
 
-#define FADE_FRAMES        30
-#define FADE_OUT_VOL_STEP  (MAX_PCM_VOLUME / FADE_FRAMES)
+#define FADE_FRAMES  30
 
 void title_init(void)
 {
@@ -30,24 +28,15 @@ void title_init(void)
     blink_timer = 0;
     start_visible = TRUE;
     fading_out = FALSE;
-    fade_out_volume = MAX_PCM_VOLUME;
 
     SND_PCM_startPlay(title_bgm, sizeof(title_bgm), SOUND_PCM_RATE_13400, SOUND_PAN_CENTER, TRUE);
-    SND_PCM_setVolume(MAX_PCM_VOLUME);
 
     PAL_fadeIn(0, 15, title_bg.palette->data, FADE_FRAMES, FALSE);
 }
 
 static void title_update_fade_out(void)
 {
-    fade_out_volume -= FADE_OUT_VOL_STEP;
-
-    if (fade_out_volume < 0)
-        fade_out_volume = 0;
-
-    SND_PCM_setVolume(fade_out_volume);
-
-    if (!PAL_isDoingFade() && fade_out_volume <= 0)
+    if (!PAL_isDoingFade())
     {
         SND_PCM_stopPlay();
         game_state = STATE_MENU;
